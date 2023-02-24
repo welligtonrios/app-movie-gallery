@@ -1,4 +1,4 @@
-const Filmes = () => {
+const Filme = () => {
     return(
         <div>
             <h1>Filmes</h1>
@@ -6,4 +6,4 @@ const Filmes = () => {
     );
 }
 
-export default Filmes;
+export default Filme;
