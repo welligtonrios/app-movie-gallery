@@ -11,7 +11,7 @@ const RoutesApp = () => {
         <Header/>
             <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path='/Filme/:id' element={<Filme/>}/>
+                <Route path='filme/:id' element={<Filme/>}/>
             </Routes>
         </BrowserRouter>
     );
