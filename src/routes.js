@@ -5,6 +5,8 @@ import Filme from './pages/Filme';
 
 import Header from './components/Header';
 
+import Error from './pages/Error'
+
 const RoutesApp = () => {
     return (
         <BrowserRouter>
@@ -12,6 +14,8 @@ const RoutesApp = () => {
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='filme/:id' element={<Filme/>}/>
+
+                <Route path='*' element={<Error/>}/>
             </Routes>
         </BrowserRouter>
     );

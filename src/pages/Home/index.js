@@ -9,6 +9,7 @@ const URL_TMDB = "https://image.tmdb.org/t/p/original/";
 const Home = () => {
 
     const [filmes, setFilmes] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
         async function loadFilmes(){
@@ -22,7 +23,18 @@ const Home = () => {
             setFilmes(response.data.results.slice(0,10));
         }
         loadFilmes();
-    })
+        setLoading(false);
+    });
+
+    {
+        if(loading === true){
+           return(
+            <div className="loading">
+                <h1>Carregando filmes...</h1>
+            </div>
+           );
+        }
+    }
 
     return(
         <div className="container">
