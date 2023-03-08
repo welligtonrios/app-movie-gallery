@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react";
 import './filmes.css'
-import {useParams, useNavigate, json} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 
 import movies_db_service from '../../services/moviesDbService';
 import {PRIVATE_KEY_MOVIES_DB} from '../../services/Constants/constants';
