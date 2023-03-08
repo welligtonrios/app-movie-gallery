@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react";
 import './filmes.css'
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams, useNavigate, json} from "react-router-dom";
 
 import movies_db_service from '../../services/moviesDbService';
 import {PRIVATE_KEY_MOVIES_DB} from '../../services/Constants/constants';
@@ -34,6 +34,22 @@ const Filme = () => {
 
     },[navigate, id]);
 
+    function save_movie() {
+        const myList = localStorage.getItem("@primeFlix");
+
+        let filmesSalvos = JSON.parse(myList) || [];
+        const hasFilmes = filmesSalvos.some((filmeSalvo)=>filmeSalvo.id === filme.id);
+
+        if(hasFilmes){
+            alert("Filme já existe");
+            return;
+        }
+            
+        filmesSalvos.push(filme);
+        localStorage.setItem("@primeFlix", JSON.stringify(filmesSalvos));
+        alert("Filme Adicionado com sucesso!!");
+    }
+
     {
         if(loading){
            return(
@@ -54,15 +70,15 @@ const Filme = () => {
             <strong>Avalição: {filme.vote_average} / 10</strong>
 
             <div className="area-buttons">
-                <button>Salvar</button>
+                <button onClick={save_movie} >Salvar</button>
                 <button>
-                <a href= {`https://youtube.com/results?search_query=${filme.title}`}>
+                <a target="blank" rel="external" href= {`https://youtube.com/results?search_query=${filme.title}`}>
                     Trailer
                 </a>
                 </button>
             </div>
         </div>
     );
-}
+} 
 
 export default Filme;
