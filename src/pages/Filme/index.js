@@ -1,9 +1,11 @@
 import { useEffect, useState} from "react";
 import './filmes.css'
+import { toast } from 'react-toastify';
 import {useParams, useNavigate} from "react-router-dom";
 
 import movies_db_service from '../../services/moviesDbService';
 import {PRIVATE_KEY_MOVIES_DB} from '../../services/Constants/constants';
+
 
 const URL_TMDB = "https://image.tmdb.org/t/p/original/";
 
@@ -41,13 +43,13 @@ const Filme = () => {
         const hasFilmes = filmesSalvos.some((filmeSalvo)=>filmeSalvo.id === filme.id);
 
         if(hasFilmes){
-            alert("Filme já existe");
+            toast.warn("Filme já existe");
             return;
         }
             
         filmesSalvos.push(filme);
         localStorage.setItem("@primeFlix", JSON.stringify(filmesSalvos));
-        alert("Filme Adicionado com sucesso!!");
+        toast.success("Filme Adicionado com sucesso!!");
     }
 
     {
